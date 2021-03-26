@@ -1,6 +1,7 @@
 package com.bit.servlet.dao;
 
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.List;
 
 public class EmailDaoOrclImpl implements EmailDao {
@@ -27,10 +28,46 @@ public class EmailDaoOrclImpl implements EmailDao {
 	
 	@Override
 	public List<EmailVo> getList() {
-		// TODO Auto-generated method stub
-		return null;
+		List<EmailVo> list = new ArrayList();
+		
+		Connection conn = null;
+		Statement stmt = null;
+		ResultSet rs = null;
+		
+		try {
+			conn = getConnection();
+			stmt = conn.createStatement();
+			String sql = "SELECT no, first_name, last_name, email, create_at " + 
+						"FROM emaillist ORDER BY create_at DESC";
+			rs = stmt.executeQuery(sql);
+			
+			while(rs.next()) {
+				Long no = rs.getLong(1);
+				String firstName = rs.getString(2);
+				String lastName = rs.getString(3);
+				String email = rs.getString(4);
+				Date createAt = rs.getDate(5);	//	java.util.Date
+				
+				EmailVo vo = new EmailVo(no, firstName, lastName, email, createAt);
+				//	리스트에 추가
+				list.add(vo);
+			}
+		} catch (SQLException e) {
+			
+		} finally {
+			try {
+				conn.close();
+				stmt.close();
+				rs.close();
+			} catch (Exception e) {
+				
+			}
+		}
+		
+		return list;
 	}
 
+	
 	@Override
 	public int insert(EmailVo vo) {
 		// TODO Auto-generated method stub
