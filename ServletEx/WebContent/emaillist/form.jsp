@@ -22,7 +22,7 @@
 		<br/>
 		<label for = "email">이메일</label>
 		<input type = "text" name = "email" id = "email" />
-		
+		<br/>
 		<input type = "submit" value = "등록" />
 	</form>
 	
