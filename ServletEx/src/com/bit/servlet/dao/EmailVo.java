@@ -23,6 +23,11 @@ public class EmailVo {
 		this.email = email;
 	}
 	
+	public EmailVo(Long no, String lastName, String firstName, String email) {
+		this(lastName, firstName, email);
+		this.no = no;
+	}
+	
 	public EmailVo(String lastName, String firstName, String email, Date createAt) {
 		this(lastName, firstName, email);
 		this.createAt = createAt;

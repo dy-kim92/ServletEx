@@ -44,8 +44,15 @@
 							<!-- 전송 버튼 -->
 							<input type = "submit" value = "삭제" />
 						</form>
-						<!-- TODO : 수정 기능을 구현해보기 -->
 						
+						<!-- TODO : 수정 기능을 구현해보기 -->
+						<form action = "<%= request.getContextPath() %>/el">
+							<input type = "hidden" name = "a" value = "update_form" />
+							<!-- 게시물의 no(PK값) -->
+							<input type = "hidden" name = "no" value = "<%= vo.getNo() %>"/>
+							<!-- 전송 버튼 -->
+							<input type = "submit" value = "수정" />
+						</form>
 						
 					</td>
 				</tr>

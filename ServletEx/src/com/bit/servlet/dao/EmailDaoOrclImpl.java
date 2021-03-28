@@ -128,4 +128,38 @@ public class EmailDaoOrclImpl implements EmailDao {
 		return deletedCount;
 	}
 
+	@Override
+	public int update(Long no, EmailVo vo) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		int updateCount = 0;
+		
+		try {
+			conn = getConnection();
+			String sql = "UPDATE emaillist SET last_name = ?, first_name = ?, email = ? " + 
+						"WHERE no = ?";
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, vo.getLastName());
+			pstmt.setString(2, vo.getFirstName());
+			pstmt.setString(3, vo.getEmail());
+			pstmt.setLong(4, no);
+			
+			updateCount = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				pstmt.close();
+				conn.close();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		
+		return updateCount;
+	}
+	
+	
+
 }

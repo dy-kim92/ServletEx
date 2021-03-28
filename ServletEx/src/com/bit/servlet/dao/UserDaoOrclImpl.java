@@ -96,4 +96,5 @@ public class UserDaoOrclImpl implements UserDao {
 		return vo;
 	}
 
+	
 }

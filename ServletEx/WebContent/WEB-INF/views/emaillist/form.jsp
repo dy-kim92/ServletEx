@@ -28,7 +28,7 @@
 	</form>
 	
 	<p>
-		<a href = "index.jsp">목록</a>
+		<a href = "el">목록</a>
 	</p>
 	
 

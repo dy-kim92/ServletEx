@@ -43,6 +43,10 @@ public class EmaillistServlet extends HttpServlet {
 			
 			//	리스트로 리다이렉트
 			resp.sendRedirect(req.getContextPath() + "/el");
+		} else if ("update_form".equals(action)) {
+			RequestDispatcher rd =
+					getServletContext().getRequestDispatcher("/WEB-INF/views/emaillist/update_form.jsp");
+			rd.forward(req, resp);
 		} else {
 			//	리스트를 불러와 req에 attribute로 추가
 			EmailDao dao = new EmailDaoOrclImpl();
@@ -84,11 +88,30 @@ public class EmaillistServlet extends HttpServlet {
 			
 			//	리스트 페이지로 리다이렉트
 			resp.sendRedirect(req.getContextPath() + "/el");
+		} else if("update".equals(action)) {
+			
+			Long no = Long.valueOf(req.getParameter("no"));
+			String lastName = req.getParameter("last_name");
+			String firstName = req.getParameter("first_name");
+			String email = req.getParameter("email");
+			
+			EmailVo vo = new EmailVo();
+			vo.setLastName(lastName);
+			vo.setFirstName(firstName);
+			vo.setEmail(email);
+			
+			EmailDao dao = new EmailDaoOrclImpl();
+			dao.update(no, vo);
+//			리스트 페이지로 리다이렉트
+			resp.sendRedirect(req.getContextPath() + "/el");
+			
 		} else {
 			doGet(req, resp);
 		}
 		
 		
 	}
+	
+	
 	
 }
