@@ -61,6 +61,11 @@
 		<a href = "el">이메일리스트(MVC)</a>
 	</p>
 	
+	<h3>Cookie Test</h3>
+	<p>
+		<a href = "<%= request.getContextPath() %>/cookies">쿠키 테스트</a>
+	</p>
+	
 <%@ include file = "/WEB-INF/views/includes/footer.jsp" %>
 
 <!-- 기본 마크업 태그 h1 ~ h6 -->
