@@ -30,6 +30,9 @@ public class UserServlet extends HttpServlet {
 			//	a = joinsuccess -> 가입 성공화면으로 FORWARD
 			RequestDispatcher rd = req.getRequestDispatcher("WEB-INF/views/users/joinsuccess.jsp");
 			rd.forward(req, resp);
+		} else if ("loginform".equals(action)) {	//	a = loginform
+			RequestDispatcher rd = req.getRequestDispatcher("WEB-INF/views/users/loginform.jsp");
+			rd.forward(req, resp);
 		} else {		
 			//	처리할 수 없는 요청일 경우 -> 404 Error
 			resp.sendError(HttpServletResponse.SC_NOT_FOUND);
