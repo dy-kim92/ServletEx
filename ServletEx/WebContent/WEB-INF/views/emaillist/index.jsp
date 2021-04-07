@@ -9,7 +9,23 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>메일링 리스트 확인</title>
+	<title>메일링 리스트 확인</title>
+
+<script type="text/javascript">
+	
+	function confirmDelete(form) {
+		//	폼 확인
+		// console.log(form);
+		//	confirm 창 띄우기
+		var result = confirm("삭제하시겠습니까 ?");
+		//	submit 이벤트 결과가 true -> 전송
+		//					false -> 전송 취소
+		
+		return result;
+	}
+	
+</script>
+
 </head>
 <body>
 
@@ -35,16 +51,16 @@
 				<!-- 삭제 버튼 -->
 				<tr>
 					<td colspan = "2">
-						<form action = "<c:url value="/el"/>">
+						<form action = "<c:url value="/el"/>" onsubmit = "return confirmDelete(this)">
 							<input type = "hidden" name = "a" value = "delete" />
 							<!-- 게시물의 no(PK값) -->
-							<input type = "hidden" name = "no" value = ${ vo.no }/>
+							<input type = "hidden" name = "no" value = ${ vo.no } />
 							<!-- 전송 버튼 -->
 							<input type = "submit" value = "삭제" />
 						</form>
 						
 						<!-- TODO : 수정 기능을 구현해보기 -->
-						<form action = "<%= request.getContextPath() %>/el">
+						<form action = "<c:url value="/el"/>">
 							<input type = "hidden" name = "a" value = "update_form" />
 							<!-- 게시물의 no(PK값) -->
 							<input type = "hidden" name = "no" value = ${ vo.no } />

@@ -15,7 +15,7 @@
 		<c:when test = "${ empty authUser }">
 			<!-- c:url 은 자동으로 앞에 웹 앱의 컨텍스트 패스를 붙여준다 -->
 			<li><a href = "<c:url value = "/users?a=loginform"/>">로그인</a></li>
-			<li><a href = "<c:url value = "/users?a=joingform"/>">회원가입</a></li>
+			<li><a href = "<c:url value = "/users?a=joinform"/>">회원가입</a></li>
 		</c:when>
 		<c:otherwise>
 			<li>${ sessionScope.authUser.name }님 환영합니다.</li>
