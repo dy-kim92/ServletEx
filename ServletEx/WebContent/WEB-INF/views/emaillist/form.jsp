@@ -46,7 +46,7 @@
 	<form name = "registForm" 
 		method = "POST" 
 		onsubmit = "return validateForm()"
-		action = "<c:url value="/el"/>"  >
+		action = "<%= request.getContextPath() %>/el" >
 		<input type = "hidden" name = "action" value = "insert" />	<!-- 숨은 데이터 -->
 		<label for = "last_name">성</label>
 		<input type = "text" name = "last_name" id = "last_name"/>

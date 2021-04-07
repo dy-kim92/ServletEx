@@ -4,9 +4,35 @@
 <%@ include file = "/WEB-INF/views/includes/header.jsp"%>
 <jsp:include page = "/WEB-INF/views/includes/nav.jsp" />
 
+<script>
+	function validateForm(){
+		var frm = document.joinform;
+		
+		if(frm.name.value.trim().length == 0){
+			alert("이름을 입력해 주세요.");
+			frm.name.focus();
+			return false;
+		}
+		
+		if(frm.password.value.trim().length == 0){
+			alert("비밀번호를 입력해 주세요.");
+			frm.password.focus();
+			return false;
+		}
+		
+		if(frm.email.value.trim().length == 0){
+			alert("이메일을 입력해 주세요.")
+			frm.email.focus();
+			return false;
+		}
+		
+		return true;
+	}
+</script>
+
 	<h1>회원 가입</h1>
 	<!-- /users 서블릿에 POST 방식으로 폼을 전달 -->
-	<form name = "joinform" method = "POST" action = "<%= request.getContextPath() %>/users">
+	<form name = "joinform" onsubmit = "return validateForm()" method = "POST" action = "<%= request.getContextPath() %>/users">
 	
 	<!-- 액션 히든 필드 -->
 	<input type = "hidden" name = "a" value = "join" />
